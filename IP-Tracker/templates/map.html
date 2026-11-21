@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IP Orbit | Location Map</title>
+
+    <!-- LEAFLET CSS -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="/" class="logo">
+            IP<span>Orbit</span>
+        </a>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/map">IP Map</a>
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+        </nav>
+
+    </header>
+
+
+    <!-- MAP SECTION -->
+
+    <main class="map-container">
+
+        <h1>IP Location Map</h1>
+
+        <p>
+            Explore geographic locations associated
+            with public IP addresses.
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="map-ip-input"
+                placeholder="Enter a public IP address (e.g. 8.8.8.8)"
+            >
+
+            <button onclick="searchMapIP()">
+                Search IP
+            </button>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <p id="map-message">
+            Loading map...
+        </p>
+
+
+        <!-- MAP -->
+
+        <div class="map-card">
+
+            <div id="map"></div>
+
+        </div>
+
+
+        <!-- COORDINATES -->
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <h3>Latitude</h3>
+
+                <p id="latitude">--</p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>Longitude</h3>
+
+                <p id="longitude">--</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="map-link">
+
+            <a href="/">
+                ← Back to IP Orbit
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h2>￣へ￣</h2>
+
+                <p>
+                    Explore IP addresses. Understand networks.
+                    Discover geographic information.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <div class="footer-column">
+
+                    <h3>Contact</h3>
+
+                    <a href="mailto:sagarrajbhanu6364@gmail.com">
+                        Email Us
+                    </a>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h3>Follow Us</h3>
+
+                    <a href="https://github.com/sagarraj369"
+                       target="_blank"
+                       rel="noopener noreferrer">GitHub</a>
+
+                    <a href="https://www.linkedin.com/in/sagarm369"
+                       target="_blank"
+                       rel="noopener noreferrer">LinkedIn</a>
+
+                    <a href="https://www.instagram.com/thisissagarraj"
+                       target="_blank"
+                       rel="noopener noreferrer">Instagram</a>
+
+                    <a href="https://x.com/_Sagar_Raj_369"
+                       target="_blank"
+                       rel="noopener noreferrer">X (Twitter)</a>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h3>Legal</h3>
+
+                    <a href="/terms">Terms of Service</a>
+
+                    <a href="/privacy">Privacy Policy</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-photo">
+
+            <img src="{{ url_for('static', filename='footer-photo.png') }}"
+                 alt="My Profile Photo">
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>© 2026 IP Orbit. All Rights Reserved.</p>
+
+            <p>Built By Sagar Raj</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- LEAFLET JAVASCRIPT -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+
+    <!-- MAP JAVASCRIPT -->
+
+    <script src="{{ url_for('static', filename='map.js') }}"></script>
+
+</body>
+
+</html>
