@@ -9,7 +9,6 @@ IPINFO_URL = "https://ipinfo.io"
 
 # GET IP INFORMATION
 def get_ip_details(ip):
-
     try:
         response = requests.get(
             f"{IPINFO_URL}/{ip}/json",
@@ -17,7 +16,6 @@ def get_ip_details(ip):
         )
 
         response.raise_for_status()
-
         data = response.json()
 
         return {
@@ -60,57 +58,22 @@ def privacy():
     return render_template("privacy.html")
 
 
-# DETECT SERVER'S PUBLIC IP
-@app.route("/my-ip")
-def my_ip():
-
-    try:
-
-        response = requests.get(
-            "https://api.ipify.org?format=json",
-            timeout=10
-        )
-
-        response.raise_for_status()
-
-        ip = response.json()["ip"]
-
-        result = get_ip_details(ip)
-
-        if result is None:
-            return jsonify({
-                "error": "Unable to retrieve IP information."
-            }), 503
-
-        return jsonify(result)
-
-    except requests.RequestException:
-
-        return jsonify({
-            "error": "Unable to detect public IP."
-        }), 503
-
-
-# SEARCH AN IP ADDRESS
+# LOOKUP PUBLIC IP ADDRESS
 @app.route("/lookup", methods=["POST"])
 def lookup_ip():
 
     data = request.get_json(silent=True) or {}
-
     ip = data.get("ip", "").strip()
 
     try:
-
         address = ipaddress.ip_address(ip)
 
         if not address.is_global:
-
             return jsonify({
                 "error": "Please enter a valid public IP address."
             }), 400
 
     except ValueError:
-
         return jsonify({
             "error": "Invalid IP address."
         }), 400
@@ -118,7 +81,6 @@ def lookup_ip():
     result = get_ip_details(ip)
 
     if result is None:
-
         return jsonify({
             "error": "Unable to retrieve IP information."
         }), 503
