@@ -7,26 +7,25 @@
     <title>IP Orbit | Terms & Conditions</title>
 
     <link rel="icon" type="image/png"
-      href="{{ url_for('static', filename='ip-orbit-icon.png') }}?v=3">
+          href="{{ url_for('static', filename='ip-orbit-icon.png') }}?v=3">
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
+
     <!-- LOADING SCREEN -->
-<div id="loader">
-    <div class="loader-content">
-        <div class="loader-spinner"></div>
-        <h2>IP Orbit</h2>
-        <p>Loading, please wait...</p>
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>IP Orbit</h2>
+            <p>Loading, please wait...</p>
+        </div>
     </div>
-</div>
 
-<!-- HEADER -->
-
+    <!-- HEADER -->
     <header>
-
         <a href="/" class="logo">
             IP<span>Orbit</span>
         </a>
@@ -37,92 +36,96 @@
             <a href="/terms">Terms</a>
             <a href="/privacy">Privacy</a>
         </nav>
-
     </header>
 
-<main class="legal-page">
+    <!-- TERMS CONTENT -->
+    <main class="legal-page">
 
-    <h1>Terms & Conditions</h1>
-    <p>Last Updated: November 2026</p>
+        <h1>Terms & Conditions</h1>
+        <p>Last Updated: November 2026</p>
 
-    <section>
-        <h2>1. Introduction</h2>
-        <p>
-            Welcome to IP Orbit. By accessing and using this website,
-            you agree to follow these Terms and Conditions.
-        </p>
-    </section>
+        <section>
+            <h2>1. Introduction</h2>
+            <p>
+                Welcome to IP Orbit. By accessing and using this website,
+                you agree to follow these Terms and Conditions.
+            </p>
+        </section>
 
-    <section>
-        <h2>2. Website Purpose</h2>
-        <p>
-            IP Orbit is an educational IP lookup platform that provides
-            publicly available IP address information and approximate
-            geographical locations.
-        </p>
-    </section>
+        <section>
+            <h2>2. Website Purpose</h2>
+            <p>
+                IP Orbit is an educational IP lookup platform that provides
+                publicly available IP address information and approximate
+                geographical locations.
+            </p>
+        </section>
 
-    <section>
-        <h2>3. Accuracy of Information</h2>
-        <p>
-            IP address information and geographical locations may not
-            always be accurate. Location results are approximate and
-            should not be treated as exact GPS locations.
-        </p>
-    </section>
+        <section>
+            <h2>3. Accuracy of Information</h2>
+            <p>
+                IP address information and geographical locations may not
+                always be accurate. Location results are approximate and
+                should not be treated as exact GPS locations.
+            </p>
+        </section>
 
-    <section>
-        <h2>4. Acceptable Use</h2>
-        <p>
-            You agree to use IP Orbit responsibly and legally.
-            You must not use this website to harass, threaten,
-            monitor, or harm another person.
-        </p>
-    </section>
+        <section>
+            <h2>4. Acceptable Use</h2>
+            <p>
+                You agree to use IP Orbit responsibly and legally.
+                You must not use this website to harass, threaten,
+                monitor, or harm another person.
+            </p>
+        </section>
 
-    <section>
-        <h2>5. External Services</h2>
-        <p>
-            IP Orbit may use third-party services to retrieve IP
-            information and display maps. Their services are subject
-            to their own terms and policies.
-        </p>
-    </section>
+        <section>
+            <h2>5. External Services</h2>
+            <p>
+                IP Orbit may use third-party services to retrieve IP
+                information and display maps. Their services are subject
+                to their own terms and policies.
+            </p>
+        </section>
 
-    <section>
-        <h2>6. Limitation of Liability</h2>
-        <p>
-            IP Orbit is provided for informational and educational
-            purposes. We do not guarantee uninterrupted service or
-            complete accuracy of information.
-        </p>
-    </section>
+        <section>
+            <h2>6. Limitation of Liability</h2>
+            <p>
+                IP Orbit is provided for informational and educational
+                purposes. We do not guarantee uninterrupted service or
+                complete accuracy of information.
+            </p>
+        </section>
 
-    <section>
-        <h2>7. Changes to Terms</h2>
-        <p>
-            These Terms and Conditions may be updated when necessary.
-            Continued use of the website means you accept the updated terms.
-        </p>
-    </section>
+        <section>
+            <h2>7. Changes to Terms</h2>
+            <p>
+                These Terms and Conditions may be updated when necessary.
+                Continued use of the website means you accept the updated terms.
+            </p>
+        </section>
 
-    <section>
-        <h2>8. Contact</h2>
-        <p>
-            For questions, contact:
-            <a href="mailto:sagarrajbhanu6364@gmail.com">
-                sagarrajbhanu6364@gmail.com
-            </a>
-        </p>
-    </section>
+        <section>
+            <h2>8. Contact</h2>
+            <p>
+                For questions, contact:
+                <a href="mailto:sagarrajbhanu6364@gmail.com">
+                    sagarrajbhanu6364@gmail.com
+                </a>
+            </p>
+        </section>
 
-    <a href="/" class="policy-btn">Back to IP Orbit</a>
+        <a href="/" class="policy-btn">Back to IP Orbit</a>
 
-</main>
+    </main>
 
-<footer>
-    <p>© 2026 IP Orbit | Built By Sagar Raj</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 IP Orbit | Built By Sagar Raj</p>
+    </footer>
+
+    <!-- LOADER SCRIPT -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
