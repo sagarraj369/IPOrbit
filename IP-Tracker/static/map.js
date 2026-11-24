@@ -7,8 +7,12 @@
 
 if (typeof L === "undefined") {
 
-    document.getElementById("map-message").textContent =
-        "Map library failed to load. Check your internet connection.";
+    const message = document.getElementById("map-message");
+
+    if (message) {
+        message.textContent =
+            "Map library failed to load. Check your internet connection.";
+    }
 
     throw new Error("Leaflet library not loaded.");
 
@@ -32,6 +36,58 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 
 let locationMarker = null;
+
+
+// SAFE JSON RESPONSE HANDLER
+
+async function getJSON(response) {
+
+    const text = await response.text();
+
+    try {
+
+        return JSON.parse(text);
+
+    } catch {
+
+        throw new Error(
+            `Server returned an invalid response (HTTP ${response.status}). Check your Flask route and Vercel deployment.`
+        );
+
+    }
+
+}
+
+
+// GET IP DETAILS FROM FLASK
+
+async function lookupIP(ip) {
+
+    const response = await fetch("/lookup", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            ip: ip
+        })
+
+    });
+
+    const data = await getJSON(response);
+
+    if (!response.ok) {
+
+        throw new Error(data.error || "IP lookup failed.");
+
+    }
+
+    return data;
+
+}
 
 
 // SHOW IP LOCATION
@@ -101,13 +157,13 @@ function showLocation(data) {
     title.textContent = "IP Orbit";
 
     const ip = document.createElement("p");
-    ip.textContent = "IP: " + data.ip;
+    ip.textContent = "IP: " + (data.ip || "Not available");
 
     const city = document.createElement("p");
-    city.textContent = "City: " + data.city;
+    city.textContent = "City: " + (data.city || "Not available");
 
     const country = document.createElement("p");
-    country.textContent = "Country: " + data.country;
+    country.textContent = "Country: " + (data.country || "Not available");
 
     const note = document.createElement("small");
     note.textContent = "Approximate IP-based location";
@@ -119,30 +175,44 @@ function showLocation(data) {
 }
 
 
-// LOAD SERVER PUBLIC IP
+// LOAD VISITOR'S PUBLIC IP LOCATION
 
 async function loadIPLocation() {
 
     const message = document.getElementById("map-message");
 
-    message.textContent = "Loading IP location...";
+    message.textContent = "Detecting your public IP...";
 
     try {
 
-        const response = await fetch("/my-ip");
+        // DETECT VISITOR IP IN BROWSER
 
-        const data = await response.json();
+        const ipResponse = await fetch(
+            "https://api.ipify.org?format=json"
+        );
 
-        if (!response.ok) {
+        const ipData = await getJSON(ipResponse);
 
-            throw new Error(data.error || "IP detection failed.");
+        if (!ipResponse.ok || !ipData.ip) {
+
+            throw new Error("Unable to detect your public IP.");
 
         }
+
+
+        // GET IP DETAILS FROM FLASK
+
+        message.textContent = "Loading IP location...";
+
+        const data = await lookupIP(ipData.ip);
+
+
+        // DISPLAY LOCATION
 
         showLocation(data);
 
         message.textContent =
-            "Approximate IP location loaded successfully.";
+            "Your approximate IP location loaded successfully.";
 
     }
 
@@ -150,7 +220,7 @@ async function loadIPLocation() {
 
         message.textContent = error.message;
 
-        console.error(error);
+        console.error("IP Orbit Map Error:", error);
 
     }
 
@@ -182,30 +252,7 @@ async function searchMapIP() {
 
     try {
 
-        const response = await fetch("/lookup", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                ip: ip
-            })
-
-        });
-
-
-        const data = await response.json();
-
-
-        if (!response.ok) {
-
-            throw new Error(data.error || "IP lookup failed.");
-
-        }
-
+        const data = await lookupIP(ip);
 
         showLocation(data);
 
@@ -218,7 +265,7 @@ async function searchMapIP() {
 
         message.textContent = error.message;
 
-        console.error(error);
+        console.error("IP Orbit Search Error:", error);
 
     }
 
@@ -227,16 +274,21 @@ async function searchMapIP() {
 
 // ENTER KEY SEARCH
 
-document.getElementById("map-ip-input").addEventListener(
-    "keydown",
-    function(event) {
+const mapInput = document.getElementById("map-ip-input");
+
+if (mapInput) {
+
+    mapInput.addEventListener("keydown", function(event) {
 
         if (event.key === "Enter") {
+
             searchMapIP();
+
         }
 
-    }
-);
+    });
+
+}
 
 
 // LOAD MAP LOCATION
