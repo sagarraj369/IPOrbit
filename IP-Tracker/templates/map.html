@@ -8,28 +8,41 @@
 
     <title>IP Orbit | Location Map</title>
 
+    <meta name="description"
+          content="Explore approximate geographic locations associated with public IP addresses using IP Orbit.">
+
     <link rel="icon" type="image/png"
-      href="{{ url_for('static', filename='ip-orbit-icon.png') }}?v=3">
+          href="{{ url_for('static', filename='ip-orbit-icon.png') }}?v=3">
 
     <!-- LEAFLET CSS -->
-
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 
+    <!-- MAIN CSS -->
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
+
 <body>
+
     <!-- LOADING SCREEN -->
-<div id="loader">
-    <div class="loader-content">
-        <div class="loader-spinner"></div>
-        <h2>IP Orbit</h2>
-        <p>Loading, please wait...</p>
+
+    <div id="loader">
+
+        <div class="loader-content">
+
+            <div class="loader-spinner"></div>
+
+            <h2>IP Orbit</h2>
+
+            <p>Loading, please wait...</p>
+
+        </div>
+
     </div>
-</div>
+
 
     <!-- HEADER -->
 
@@ -40,10 +53,15 @@
         </a>
 
         <nav>
+
             <a href="/">Home</a>
+
             <a href="/map">IP Map</a>
+
             <a href="/terms">Terms</a>
+
             <a href="/privacy">Privacy</a>
+
         </nav>
 
     </header>
@@ -56,12 +74,12 @@
         <h1>IP Location Map</h1>
 
         <p>
-            Explore geographic locations associated
+            Explore approximate geographic locations associated
             with public IP addresses.
         </p>
 
 
-        <!-- SEARCH -->
+        <!-- SEARCH BOX -->
 
         <div class="search-box">
 
@@ -69,23 +87,30 @@
                 type="text"
                 id="map-ip-input"
                 placeholder="Enter a public IP address (e.g. 8.8.8.8)"
+                autocomplete="off"
             >
 
-            <button onclick="searchMapIP()">
+            <button
+                type="button"
+                onclick="searchMapIP()">
+
                 Search IP
+
             </button>
 
         </div>
 
 
-        <!-- STATUS -->
+        <!-- STATUS MESSAGE -->
 
-        <p id="map-message">
+        <p id="map-message" aria-live="polite">
+
             Loading map...
+
         </p>
 
 
-        <!-- MAP -->
+        <!-- MAP CARD -->
 
         <div class="map-card">
 
@@ -106,6 +131,7 @@
 
             </div>
 
+
             <div class="info-card">
 
                 <h3>Longitude</h3>
@@ -116,6 +142,8 @@
 
         </div>
 
+
+        <!-- BACK BUTTON -->
 
         <div class="map-link">
 
@@ -134,58 +162,109 @@
 
         <div class="footer-content">
 
+
+            <!-- FOOTER BRAND -->
+
             <div class="footer-brand">
 
-                <h2>￣へ￣</h2>
+                <h2>IP Orbit</h2>
 
                 <p>
+
                     Explore IP addresses. Understand networks.
                     Discover geographic information.
+
                 </p>
 
             </div>
 
+
+            <!-- FOOTER LINKS -->
+
             <div class="footer-links">
+
+
+                <!-- CONTACT -->
 
                 <div class="footer-column">
 
                     <h3>Contact</h3>
 
                     <a href="mailto:sagarrajbhanu6364@gmail.com">
+
                         Email Us
+
                     </a>
 
                 </div>
+
+
+                <!-- SOCIAL LINKS -->
 
                 <div class="footer-column">
 
                     <h3>Follow Us</h3>
 
-                    <a href="https://github.com/sagarraj369"
-                       target="_blank"
-                       rel="noopener noreferrer">GitHub</a>
+                    <a
+                        href="https://github.com/sagarraj369"
+                        target="_blank"
+                        rel="noopener noreferrer">
 
-                    <a href="https://www.linkedin.com/in/sagarm369"
-                       target="_blank"
-                       rel="noopener noreferrer">LinkedIn</a>
+                        GitHub
 
-                    <a href="https://www.instagram.com/thisissagarraj"
-                       target="_blank"
-                       rel="noopener noreferrer">Instagram</a>
+                    </a>
 
-                    <a href="https://x.com/_Sagar_Raj_369"
-                       target="_blank"
-                       rel="noopener noreferrer">X (Twitter)</a>
+
+                    <a
+                        href="https://www.linkedin.com/in/sagarm369"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        LinkedIn
+
+                    </a>
+
+
+                    <a
+                        href="https://www.instagram.com/thisissagarraj"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        Instagram
+
+                    </a>
+
+
+                    <a
+                        href="https://x.com/_Sagar_Raj_369"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        X (Twitter)
+
+                    </a>
 
                 </div>
+
+
+                <!-- LEGAL -->
 
                 <div class="footer-column">
 
                     <h3>Legal</h3>
 
-                    <a href="/terms">Terms of Service</a>
+                    <a href="/terms">
 
-                    <a href="/privacy">Privacy Policy</a>
+                        Terms of Service
+
+                    </a>
+
+
+                    <a href="/privacy">
+
+                        Privacy Policy
+
+                    </a>
 
                 </div>
 
@@ -193,18 +272,33 @@
 
         </div>
 
+
+        <!-- FOOTER IMAGE -->
+
         <div class="footer-photo">
 
-            <img src="{{ url_for('static', filename='footer-photo.png') }}"
-                 alt="My Profile Photo">
+            <img
+                src="{{ url_for('static', filename='footer-photo.png') }}"
+                alt="Profile Photo">
 
         </div>
 
+
+        <!-- COPYRIGHT -->
+
         <div class="footer-bottom">
 
-            <p>© 2026 IP Orbit. All Rights Reserved.</p>
+            <p>
 
-            <p>Built By Sagar Raj</p>
+                © 2026 IP Orbit. All Rights Reserved.
+
+            </p>
+
+            <p>
+
+                Built By Sagar Raj
+
+            </p>
 
         </div>
 
@@ -215,9 +309,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
+
     <!-- MAP JAVASCRIPT -->
 
     <script src="{{ url_for('static', filename='map.js') }}"></script>
+
+
+    <!-- MAIN JAVASCRIPT -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 
 </body>
 
