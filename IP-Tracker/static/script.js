@@ -110,16 +110,18 @@ if (ipInput) {
 }
 
 
-// PAGE LOADING ANIMATION
+// IP ORBIT - PAGE LOADING ANIMATION
 
-window.addEventListener("load", function() {
+function hidePageLoader() {
     const loader = document.getElementById("loader");
 
     if (loader) {
         loader.classList.add("hide");
 
-        setTimeout(function() {
+        setTimeout(function () {
             loader.style.display = "none";
         }, 500);
     }
-});
+}
+
+window.addEventListener("load", hidePageLoader);
