@@ -8,8 +8,11 @@
 
     <title>IP Orbit | IP Address Lookup</title>
 
+    <meta name="description"
+          content="IP Orbit helps you explore public IP addresses, network information, and approximate geographic locations.">
+
     <link rel="icon" type="image/png"
-      href="{{ url_for('static', filename='ip-orbit-icon.png') }}?v=3">
+          href="{{ url_for('static', filename='ip-orbit-icon.png') }}?v=3">
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
@@ -17,14 +20,23 @@
 </head>
 
 <body>
+
     <!-- LOADING SCREEN -->
-<div id="loader">
-    <div class="loader-content">
-        <div class="loader-spinner"></div>
-        <h2>IP Orbit</h2>
-        <p>Loading, please wait...</p>
+
+    <div id="loader">
+
+        <div class="loader-content">
+
+            <div class="loader-spinner"></div>
+
+            <h2>IP Orbit</h2>
+
+            <p>Loading, please wait...</p>
+
+        </div>
+
     </div>
-</div>
+
 
     <!-- HEADER -->
 
@@ -35,10 +47,15 @@
         </a>
 
         <nav>
+
             <a href="/">Home</a>
+
             <a href="/map">IP Map</a>
+
             <a href="/terms">Terms</a>
+
             <a href="/privacy">Privacy</a>
+
         </nav>
 
     </header>
@@ -50,17 +67,27 @@
 
         <div class="hero-content">
 
-            <span class="tag">NETWORK INFORMATION SYSTEM</span>
+            <span class="tag">
+                NETWORK INFORMATION SYSTEM
+            </span>
 
             <h1>
+
                 Discover the World Behind an
+
                 <span>IP Address.</span>
+
             </h1>
 
             <p>
+
                 Explore public IP information, network details
                 and geographic locations.
+
             </p>
+
+
+            <!-- SEARCH IP -->
 
             <div class="search-box">
 
@@ -68,21 +95,39 @@
                     type="text"
                     id="ipInput"
                     placeholder="Enter a public IP address"
+                    autocomplete="off"
                 >
 
-                <button onclick="searchIP()">
+                <button type="button" onclick="searchIP()">
+
                     Search IP
+
                 </button>
 
             </div>
 
-            <button class="detect-button" onclick="detectMyIP()">
-                Detect Server Public IP
+
+            <!-- DETECT VISITOR IP -->
+
+            <button
+                type="button"
+                class="detect-button"
+                onclick="detectMyIP()">
+
+                Detect My Public IP
+
             </button>
 
-            <p id="status"></p>
+
+            <!-- STATUS MESSAGE -->
+
+            <p id="status" aria-live="polite"></p>
+
         </div>
+
     </section>
+
+
     <!-- INFORMATION SECTION -->
 
     <section class="information-section">
@@ -90,62 +135,109 @@
         <h2>IP Address Information</h2>
 
         <p class="section-description">
+
             Information retrieved for the selected public IP address.
+
         </p>
+
+
+        <!-- IP INFORMATION CARDS -->
 
         <div class="info-grid">
 
+
             <div class="info-card">
+
                 <h3>IP Address</h3>
+
                 <p id="ip">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>Hostname</h3>
+
                 <p id="hostname">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>City</h3>
+
                 <p id="city">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>Region</h3>
+
                 <p id="region">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>Country</h3>
+
                 <p id="country">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>Postal Code</h3>
+
                 <p id="postal">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>ISP / Organization</h3>
+
                 <p id="org">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>Timezone</h3>
+
                 <p id="timezone">--</p>
+
             </div>
 
+
             <div class="info-card">
+
                 <h3>Coordinates</h3>
+
                 <p id="location">--</p>
+
             </div>
+
 
         </div>
+
+
+        <!-- MAP LINK -->
 
         <div class="map-link">
 
             <a href="/map">
+
                 Explore IP Location Map →
+
             </a>
 
         </div>
@@ -159,82 +251,151 @@
 
         <div class="footer-content">
 
+
+            <!-- FOOTER BRAND -->
+
             <div class="footer-brand">
 
-                <h2>￣へ￣</h2>
+                <h2>IP Orbit</h2>
 
                 <p>
+
                     Explore IP addresses. Understand networks.
                     Discover geographic information.
+
                 </p>
 
             </div>
 
+
+            <!-- FOOTER LINKS -->
+
             <div class="footer-links">
+
+
+                <!-- CONTACT -->
 
                 <div class="footer-column">
 
                     <h3>Contact</h3>
 
                     <a href="mailto:sagarrajbhanu6364@gmail.com">
+
                         Email Us
+
                     </a>
 
                 </div>
+
+
+                <!-- SOCIAL LINKS -->
 
                 <div class="footer-column">
 
                     <h3>Follow Us</h3>
 
-                    <a href="https://github.com/sagarraj369"
-                       target="_blank"
-                       rel="noopener noreferrer">GitHub</a>
+                    <a
+                        href="https://github.com/sagarraj369"
+                        target="_blank"
+                        rel="noopener noreferrer">
 
-                    <a href="https://www.linkedin.com/in/sagarm369"
-                       target="_blank"
-                       rel="noopener noreferrer">LinkedIn</a>
+                        GitHub
 
-                    <a href="https://www.instagram.com/thisissagarraj"
-                       target="_blank"
-                       rel="noopener noreferrer">Instagram</a>
+                    </a>
 
-                    <a href="https://x.com/_Sagar_Raj_369"
-                       target="_blank"
-                       rel="noopener noreferrer">X (Twitter)</a>
+
+                    <a
+                        href="https://www.linkedin.com/in/sagarm369"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        LinkedIn
+
+                    </a>
+
+
+                    <a
+                        href="https://www.instagram.com/thisissagarraj"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        Instagram
+
+                    </a>
+
+
+                    <a
+                        href="https://x.com/_Sagar_Raj_369"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        X (Twitter)
+
+                    </a>
 
                 </div>
+
+
+                <!-- LEGAL LINKS -->
 
                 <div class="footer-column">
 
                     <h3>Legal</h3>
 
-                    <a href="/terms">Terms of Service</a>
+                    <a href="/terms">
 
-                    <a href="/privacy">Privacy Policy</a>
+                        Terms of Service
+
+                    </a>
+
+
+                    <a href="/privacy">
+
+                        Privacy Policy
+
+                    </a>
 
                 </div>
+
 
             </div>
 
         </div>
 
+
+        <!-- FOOTER IMAGE -->
+
         <div class="footer-photo">
 
-            <img src="{{ url_for('static', filename='footer-photo.png') }}"
-                 alt="Profile Photo">
+            <img
+                src="{{ url_for('static', filename='footer-photo.png') }}"
+                alt="Profile Photo">
 
         </div>
 
+
+        <!-- COPYRIGHT -->
+
         <div class="footer-bottom">
 
-            <p>© 2026 IP Orbit. All Rights Reserved.</p>
+            <p>
 
-            <p>Built By Sagar Raj</p>
+                © 2026 IP Orbit. All Rights Reserved.
+
+            </p>
+
+            <p>
+
+                Built By Sagar Raj
+
+            </p>
 
         </div>
 
     </footer>
 
+
+    <!-- JAVASCRIPT -->
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
